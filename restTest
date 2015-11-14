@@ -1,0 +1,16 @@
+curl -s -X GET -H 'Accept: application/json' 127.0.0.1:8080/containers 
+curl -s -X GET -H 'Accept: application/json' 127.0.0.1:8080/containers?state=running
+curl -s -X GET -H 'Accept: application/json' 127.0.0.1:8080/containers/d8ba8958da03
+curl -s -X DELETE -H 'Accept: application/json' 127.0.0.1:8080/containers/d8ba8958da03
+curl -s -X DELETE -H 'Accept: application/json' 127.0.0.1:8080/containers
+curl -X POST -H 'Content-Type: application/json' 127.0.0.1:8080/containers -d '{"image": "1418d529a5ce","publish":"8080:23"}'
+curl -X PATCH -H 'Content-Type: application/json' 127.0.0.1:8080/containers/d8ba8958da03 -d '{"state":"running"}'
+curl -X PATCH -H 'Content-Type: application/json' 127.0.0.1:8080/containers/d8ba8958da03 -d '{"state":"stopped"}'
+curl -s -X GET -H 'Accept: application/json' 127.0.0.1:8080/containers/d8ba8958da03/logs
+curl -s -X GET -H 'Accept: application/json' 127.0.0.1:8080/images
+curl -s -X DELETE -H 'Accept: application/json' 127.0.0.1:8080/images/1418d529a5ce
+curl -s -X DELETE -H 'Accept: application/json' 127.0.0.1:8080/images
+curl -s -X PATCH -H 'Accept: application/json' 127.0.0.1:8080/images/1418d529a5ce -d '{"tag": "test:1.0"}'
+
+
+
